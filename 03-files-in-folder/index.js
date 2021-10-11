@@ -11,9 +11,9 @@ const getFiles = async (currentPath) => {
       return getFiles(path.join(currentPath, file.name, '/'))
     }
     stat(path.join(currentPath, file.name), (err, stats) => {
-      console.log('\nFile name: ', file.name.slice(0, file.name.lastIndexOf('.')));
-      console.log('File extension: ', path.extname(file.name).slice(1));
-      console.log('File weight: ', stats.size + 'b');
+      const dotIndex = file.name.lastIndexOf('.');
+      const fileName = path.extname(file.name) ? file.name.slice(0, dotIndex) : file.name
+      console.log(`<${fileName}>-<${path.extname(file.name).slice(1)}>-<${stats.size + 'b'}>`);
     })
   })
 }

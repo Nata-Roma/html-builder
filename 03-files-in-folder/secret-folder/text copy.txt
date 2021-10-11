@@ -1,6 +1,0 @@
-Hello
-This is me!
-I am writing to a stdin
-And my writing goes directly to a file!
-Nice
-Off we go))
