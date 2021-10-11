@@ -9,7 +9,7 @@ const readFileData = async (fileDir) => {
 
   files.forEach(async (file) => {
     if (file == undefined) return;
-    if (file === file.isDirectory) {
+    if (file.isDirectory()) {
       return readFileData(path.join(fileDir, file.name))
     } else {
       if (path.extname(file.name) === '.css') {
@@ -32,7 +32,9 @@ const createDir = async (fileDir) => {
         .then(async () => {
           await readFileData(fileDir);
         })
-    } else readFileData(fileDir);
+    } else {
+      await readFileData(fileDir);
+    };
   })
 }
 
